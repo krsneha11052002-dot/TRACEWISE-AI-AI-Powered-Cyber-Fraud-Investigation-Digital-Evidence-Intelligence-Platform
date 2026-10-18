@@ -1,0 +1,20 @@
+services:
+  # TRACEWISE AI - Fullstack Node/Express + Vite Web Service
+  - type: web
+    name: tracewise-ai-platform
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLIENT_ORIGIN
+        value: "*"
+      # Optional: To use persistent cloud MongoDB Atlas, uncomment and add connection string in Render Dashboard
+      # - key: MONGODB_URI
+      #   sync: false
